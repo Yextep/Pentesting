@@ -1,0 +1,74 @@
+
+# "man"-pages in windows
+help dir
+
+# execute 2 commands
+dir & whoami
+
+# Delete file
+del
+
+# Create folder/directory
+md folderName
+
+# Show hidden files 
+dir /A
+
+# grep files
+findstr file.txt
+
+# show file contents
+type file
+
+# delete file
+del /f file
+
+# add a new user
+net user <username> <password> /add
+
+# add a user to admin group
+net localgroup administrators <username> /add
+
+# Change password of a user
+net user <username> <password>
+
+# Other logged in Users
+qwinsta
+
+# List users
+net user
+
+# info about a user
+net user <username>
+
+# disable firewall
+netsh firewall set opmode disable
+
+# Permissions on a folder recursively
+cacls *.* /t /e /g domainname\administrator:f
+
+# map share to a drive
+net use z: \\<ip address>\SYSVOL
+
+# enable RDP access
+reg add "hklm\system\currentcontrolset\control\terminal server" /f /v fDenyTSConnections /t REG_DWORD /d 0
+netsh firewall set service remoteadmin enable
+netsh firewall set service remotedesktop enable
+
+# Running Tasks
+tasklist
+
+# Kill a task
+taskkill f /pid 7777
+taskkill /f /im "Taskmgr.ex"
+
+# run command through smb when user/password is known
+smbexec.py  domainName/userName:"password"@ipAddress
+
+# run an exploit on cmd.exe
+powershell -ExecutionPolicy ByPass -command "<command here>"
+powershell -ExecutionPolicy ByPass -command ./test.ps1
+powershell -ExecutionPolicy ByPass -command C:\Users\<username>\Desktop\test.ps1
+
+# run on Powershell
+ Set-ExecutionPolicy Bypass -force; cd C:\Users\<username>\Desktop\; .\test.ps1
